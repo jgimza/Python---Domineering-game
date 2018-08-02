@@ -1,3 +1,3 @@
-# python-domineering
+Python - Domineering game
 
-Projekt na przedmiot interfejsy graficzne
+Domineering game created with Python for two players or a player vs AI
