@@ -1,0 +1,33 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Domineering</title>
+</head>
+<body>
+<div class="container">
+  <div class="page-header">
+    <h1 class="text-uppercase"><b><a href="{{url_for('index')}}" style="text-decoration: none; color:#111111;">Domineering</a></b></h1>
+	  </div>
+	  </div>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{{url_for('index')}}" style="margin-left:20px;">Domineering</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="{{url_for('index')}}" style="margin-left:20px;">Strona Główna</a></li>
+      <li><a href="{{url_for('gra')}}" style="margin-left:20px;">Gra</a></li>
+	  <li><a href="{{url_for('zasady')}}" style="margin-left:20px;">Zasady gry</a></li>
+    </ul>
+  </div>
+</nav>
+<div id="content">{% block content %}{% endblock %}</div>
+<footer style="height:40px; background-color:#111111; color:white;" class="navbar-fixed-bottom">
+    <div class="footer navbar-fixed-bottom">
+        <span style="font-weight:bold; margin-left:20px;">Aplikacja stworzona przez: Jakub Gimza</span></p>
+    </div>
+</footer>
+
+</body>
+</html>

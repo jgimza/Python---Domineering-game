@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Nowa Gra{% endblock %}
+{% block content %}
+{% if cpu == 1 and difficulty == 0 %}
+<h1 style="text-align:center; margin-top:100px;">Nie wybrałeś poziomu trudności komputera!</h1>
+<h1 style="text-align:center; font-weight:bold; font-size:50px;">:(</h1>
+{% else %}
+<main class ="main-content game">
+	<div style="align-left; width:50%; height:150px; margin-top:100px; margin-left:50px; padding:40px;">
+        <table class="scoreboard">
+		<h1 style="font-weight:bold;">Tura:{{ turn }}</h1>
+		<p style="font-weight:bold;">Możliwe ruchy gracza pierwszego: 
+		{{ piony|length }}
+		</p>
+		<p style="font-weight:bold;">Możliwe ruchy gracza drugiego: 
+		{{ poziomy|length }}
+		</p>
+		<p style="font-weight:bold;">Punkty gracza pierwszego: {{ players[0].scores }}</p>
+		<p style="font-weight:bold;">Punkty gracza drugiego: {{ players[1].scores }}</p>
+		</table>
+	</div>
+	<div style="margin-top:100px; padding:40px; margin-left:40px;">
+        <table class="board" cellspacing="0" style="margin-bottom:175px">
+                    {% for y in range(board.wysokosc) %}
+                        <tr>
+                            {% for x in range(board.szerokosc) %}
+                                <td class="dot"></td>
+                                {% if x < board.szerokosc-1 %}
+                                    <td class="h-edge">
+                                        {% if not board.pozioma[y][x] %}
+                                            <a class="h-edge__move" id="h.{{ y }}.{{ x }}" href="{{ url_for('nowagra', direction='horizontal', row=y, col=x) }}"></a>
+                                        {% endif %}
+                                    </td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                        <tr>
+                            {% for x in range(board.szerokosc) if y < board.wysokosc-1 %}
+                                <td class="v-edge">
+                                    {% if not board.pionowa[y][x] %}
+                                        <a class="v-edge__move" id="v.{{ y }}.{{ x }}" href="{{ url_for('nowagra', direction='vertical', row=y, col=x) }}"></a>
+                                    {% endif %}
+									<td class ="middle"></td>
+                                </td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+        </table>
+	</div>
+</main>
+{% endif %}
+{%block content2 %}
+{% endblock %}
+{% endblock %}

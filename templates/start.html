@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Formularz startowy{% endblock %}
+{% block content %}
+
+{% block form %}
+{# {% from 'includes/_formhelper.html' import render_field %} #} 
+<div style="border-style: solid; padding:20px; width:220px; height:480px; margin:auto; margin-top:75px;">
+<form method='POST' action='/start'>
+	<label style="padding:3px;">{{ form.typ_gry.label }}</label> 
+	<div>{{ form.typ_gry }}</div>
+	<label style="padding:3px;">{{ form.poziom_trudnosci.label }}</label> 
+	<div>{{ form.poziom_trudnosci }}</div>
+	<label style="padding:5px;">{{ form.wysokosc.label }}</label> 
+	<div>{{form.wysokosc }}</div>
+	<label style="padding:5px;">{{ form.szerokosc.label }}</label> 
+	<div>{{form.szerokosc }}</div>
+	<div style="padding:10px; margin-top:18px;">
+		<button class="btn btn-success btn-block" type='submit'>Rozpocznij grę</button>
+	</div>
+</form>
+</div>
+{% endblock %}
+
+{% endblock %}
